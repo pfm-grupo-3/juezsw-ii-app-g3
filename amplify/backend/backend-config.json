@@ -1,6 +1,6 @@
 {
   "auth": {
-    "juezswiiapp": {
+    "juezswiiadminapp": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -11,8 +11,8 @@
           "EMAIL"
         ],
         "signupAttributes": [
-          "NAME",
-          "EMAIL"
+          "EMAIL",
+          "PREFERRED_USERNAME"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
