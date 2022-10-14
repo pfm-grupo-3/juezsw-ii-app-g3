@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "juezsw",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authjuezswiiadminapp",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

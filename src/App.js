@@ -1,53 +1,43 @@
-import React from "react";
+import * as React from "react"
 import "./App.css";
 import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
+import "@aws-amplify/ui-react/styles.css";
 import {
   Authenticator,
-  Heading,
-  defaultDarkModeOverride,
   ThemeProvider,
   Flex,
-  Text,
-  Button,
+  View,
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-import { DocumentsTable } from "./components/DocumentsTable";
+import { AssetTable } from "./components/AssetTable";
+import theme from "./theme";
+import { AssetForm } from "./components/AssetForm";
+import {UserBar} from "./components/UserBar";
+
 Amplify.configure(awsconfig);
 
 function App() {
-  const [colorMode] = React.useState("system");
-  const theme = {
-    name: "my-theme",
-    overrides: [defaultDarkModeOverride],
-  };
-  return (
-    <ThemeProvider theme={theme} colorMode={colorMode}>
-      <Authenticator>
-        {({ signOut, user }) => (
-          <Flex direction={"column"} maxWidth={"50%"} margin={"auto"}>
-            <Heading level={3}>Documentos</Heading>
-            <DocumentsTable variation={"striped"} highlightOnHover={true}>
-              {" "}
-            </DocumentsTable>
-            <Text>
-              <Text as={"span"} fontWeight={800}>
-                Usuario:
-              </Text>
-              {" " + user.attributes.email}
-            </Text>
+  const [colorMode] = React.useState("dark");
 
-            <Button
-              onClick={() => signOut()}
-              variation={"primary"}
-              backgroundColor={"red.60"}
-              color={"white"}
-            >
-              Sign out
-            </Button>
-          </Flex>
-        )}
-      </Authenticator>
+  return (
+    <ThemeProvider colorMode={colorMode} theme={theme}>
+      <View>
+        <Authenticator>
+          {({ signOut, user }) => (
+            <Flex direction={"column"} margin={"auto"} maxWidth={"80%"}>
+              <UserBar signOut={signOut} username={user.attributes.preferred_username || user.attributes.email}></UserBar>
+
+              <AssetTable
+                highlightOnHover={true}
+                variation={"striped"}
+              ></AssetTable>
+              <AssetForm author={user.username}></AssetForm>
+
+            </Flex>
+          )}
+        </Authenticator>
+      </View>
     </ThemeProvider>
   );
 }
