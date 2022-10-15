@@ -57,7 +57,7 @@ function App() {
               <AssetTable
                 highlightOnHover={true}
                 selectAsset={asset => selectAsset(asset)}
-                variation={"striped"}
+                variation={"bordered"}
               ></AssetTable>
               <AssetForm author={user.username}></AssetForm>
               <AssetInfoModal
