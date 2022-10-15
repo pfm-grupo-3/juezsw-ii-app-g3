@@ -39,7 +39,7 @@ export declare class Asset {
   readonly endDate: string;
   readonly bids?: (Bid | null)[] | null;
   readonly author?: string | null;
-  readonly estado?: AssetState | keyof typeof AssetState | null;
+  readonly state?: AssetState | keyof typeof AssetState | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Asset, AssetMetaData>);

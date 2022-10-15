@@ -30,7 +30,7 @@ export const onCreateAsset = /* GraphQL */ `
         startedAt
       }
       author
-      estado
+      state
       createdAt
       updatedAt
       _version
@@ -68,7 +68,7 @@ export const onUpdateAsset = /* GraphQL */ `
         startedAt
       }
       author
-      estado
+      state
       createdAt
       updatedAt
       _version
@@ -106,7 +106,7 @@ export const onDeleteAsset = /* GraphQL */ `
         startedAt
       }
       author
-      estado
+      state
       createdAt
       updatedAt
       _version
@@ -136,7 +136,7 @@ export const onCreateBid = /* GraphQL */ `
           startedAt
         }
         author
-        estado
+        state
         createdAt
         updatedAt
         _version
@@ -174,7 +174,7 @@ export const onUpdateBid = /* GraphQL */ `
           startedAt
         }
         author
-        estado
+        state
         createdAt
         updatedAt
         _version
@@ -212,7 +212,7 @@ export const onDeleteBid = /* GraphQL */ `
           startedAt
         }
         author
-        estado
+        state
         createdAt
         updatedAt
         _version

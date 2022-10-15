@@ -30,7 +30,7 @@ export const getAsset = /* GraphQL */ `
         startedAt
       }
       author
-      estado
+      state
       createdAt
       updatedAt
       _version
@@ -61,7 +61,7 @@ export const listAssets = /* GraphQL */ `
           startedAt
         }
         author
-        estado
+        state
         createdAt
         updatedAt
         _version
@@ -101,7 +101,7 @@ export const syncAssets = /* GraphQL */ `
           startedAt
         }
         author
-        estado
+        state
         createdAt
         updatedAt
         _version
@@ -134,7 +134,7 @@ export const getBid = /* GraphQL */ `
           startedAt
         }
         author
-        estado
+        state
         createdAt
         updatedAt
         _version
@@ -173,7 +173,7 @@ export const listBids = /* GraphQL */ `
           startDate
           endDate
           author
-          estado
+          state
           createdAt
           updatedAt
           _version
@@ -221,7 +221,7 @@ export const syncBids = /* GraphQL */ `
           startDate
           endDate
           author
-          estado
+          state
           createdAt
           updatedAt
           _version

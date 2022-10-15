@@ -1,8 +1,9 @@
 # This "input" configures a global authorization rule to enable public access to
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
-
-enum AssetType{
+input AMPLIFY {
+  globalAuthRule: AuthRule = { allow: public }
+} # FOR TESTING ONLY!
+enum AssetType {
   VIVIENDA
   VEHICULO
   VEHICULO_INDUSTRIAL
@@ -16,16 +17,29 @@ enum AssetType{
   BIEN_ESPECIAL
 }
 
-enum AssetState{
+enum AssetState {
   DISPONIBLE
   NO_DISPONIBLE
 }
 
-type Asset @model @auth(rules: [
-  { allow: groups, groups: ["Admins"] }
-  { allow: owner, ownerField: "author"},
-  { allow: public, operations: [read] }
-  ]){
+type Asset
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      {
+        allow: groups
+        groups: ["Admins"]
+        operations: [create, read, update, delete]
+      }
+      { allow: private, operations: [read] }
+      {
+        allow: owner
+        ownerField: "author"
+        operations: [create, read, update, delete]
+      }
+    ]
+  ) {
   id: ID!
   name: String!
   type: AssetType!
@@ -37,14 +51,27 @@ type Asset @model @auth(rules: [
   endDate: AWSDateTime!
   bids: [Bid] @hasMany
   author: String
-  estado: AssetState
+  state: AssetState
 }
 
-type Bid @model @auth(rules: [
-  { allow: groups, groups: ["Admins"] },
-  { allow: owner, ownerField: "author"},
-  { allow: public, operations: [read] }
-  ]){
+type Bid
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      {
+        allow: groups
+        groups: ["Admins"]
+        operations: [create, read, update, delete]
+      }
+      { allow: private, operations: [read] }
+      {
+        allow: owner
+        ownerField: "author"
+        operations: [create, read, update, delete]
+      }
+    ]
+  ) {
   id: ID!
   amount: Float!
   date: AWSDateTime!

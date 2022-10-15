@@ -20,7 +20,13 @@ const formatDate = (d) => {
   return date.toISOString();
 };
 
-export const AssetTable = ({ caption, highlightOnHover, size, variation }) => {
+export const AssetTable = ({
+  caption,
+  highlightOnHover,
+  size,
+  variation,
+  selectAsset,
+}) => {
   const [assets, setAssets] = useState([]);
 
   useEffect(() => {
@@ -44,7 +50,7 @@ export const AssetTable = ({ caption, highlightOnHover, size, variation }) => {
   const updateAssetState = async (asset, state) => {
     await DataStore.save(
       Asset.copyOf(asset, (updated) => {
-        updated.estado = state;
+        updated.state = state;
       })
     );
   };
@@ -81,10 +87,10 @@ export const AssetTable = ({ caption, highlightOnHover, size, variation }) => {
                   <TableCell>{asset.initialBid}</TableCell>
                   <TableCell>{formatDate(asset.startDate)}</TableCell>
                   <TableCell>{formatDate(asset.endDate)}</TableCell>
-                  <TableCell>{asset.estado}</TableCell>
+                  <TableCell>{asset.state}</TableCell>
                   <TableCell>
-                      <ButtonGroup variation={"primary"}>
-                      {asset.estado === AssetState.DISPONIBLE && (
+                    <ButtonGroup variation={"primary"}>
+                      {asset.state === AssetState.DISPONIBLE && (
                         <Button
                           onClick={() =>
                             updateAssetState(asset, AssetState.NO_DISPONIBLE)
@@ -94,7 +100,7 @@ export const AssetTable = ({ caption, highlightOnHover, size, variation }) => {
                           <FaEyeSlash></FaEyeSlash>
                         </Button>
                       )}
-                      {asset.estado === AssetState.NO_DISPONIBLE && (
+                      {asset.state === AssetState.NO_DISPONIBLE && (
                         <Button
                           onClick={() =>
                             updateAssetState(asset, AssetState.DISPONIBLE)
@@ -105,7 +111,7 @@ export const AssetTable = ({ caption, highlightOnHover, size, variation }) => {
                         </Button>
                       )}
 
-                      <Button size={"small"}>
+                      <Button onClick={() => selectAsset(asset)} size={"small"}>
                         <FaInfoCircle></FaInfoCircle>
                       </Button>
                       <Button

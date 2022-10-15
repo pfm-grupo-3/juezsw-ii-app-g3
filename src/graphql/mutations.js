@@ -33,7 +33,7 @@ export const createAsset = /* GraphQL */ `
         startedAt
       }
       author
-      estado
+      state
       createdAt
       updatedAt
       _version
@@ -74,7 +74,7 @@ export const updateAsset = /* GraphQL */ `
         startedAt
       }
       author
-      estado
+      state
       createdAt
       updatedAt
       _version
@@ -115,7 +115,7 @@ export const deleteAsset = /* GraphQL */ `
         startedAt
       }
       author
-      estado
+      state
       createdAt
       updatedAt
       _version
@@ -148,7 +148,7 @@ export const createBid = /* GraphQL */ `
           startedAt
         }
         author
-        estado
+        state
         createdAt
         updatedAt
         _version
@@ -189,7 +189,7 @@ export const updateBid = /* GraphQL */ `
           startedAt
         }
         author
-        estado
+        state
         createdAt
         updatedAt
         _version
@@ -230,7 +230,7 @@ export const deleteBid = /* GraphQL */ `
           startedAt
         }
         author
-        estado
+        state
         createdAt
         updatedAt
         _version

@@ -34,8 +34,10 @@ export const AssetForm = ({ author }) => {
 
     const asset = new Asset({
       ...inputs,
-      estado: AssetState.DISPONIBLE,
+      state: AssetState.DISPONIBLE,
       initialBid: parseFloat(inputs.initialBid),
+      startDate: new Date(inputs.startDate).toISOString(),
+      endDate: new Date(inputs.endDate).toISOString(),
       author,
     });
     await createAsset(asset);
